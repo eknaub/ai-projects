@@ -1,14 +1,14 @@
-<header>Stock Predictions</header>
+<header>Stonks Predictions</header>
 <main>
   @if(!this.isLoadingStocksApi() && !this.isLoadingPredictions() &&
   !this.hasReport()) {
   <section class="action-panel">
     <div>
-      <span class="subtitle">Predict stock prices powered by OpenAI</span>
+      <span class="subtitle">Predict stonk prices powered by OpenAI</span>
     </div>
     <form [formGroup]="tickerForm" id="ticker-input-form" class="ticker-form">
       <mat-form-field appearance="outline">
-        <mat-label>Stock ticker</mat-label>
+        <mat-label>Stonk ticker</mat-label>
         <input
           matInput
           formControlName="ticker"
@@ -45,7 +45,7 @@
   </section>
   } @if (this.isLoadingStocksApi()) {
   <section class="loading-panel">
-    <div id="api-message">Querying Stocks API...</div>
+    <div id="api-message">Querying Stonks API...</div>
   </section>
   } @if (this.isLoadingPredictions()) {
   <section class="loading-panel">
@@ -53,7 +53,12 @@
   </section>
   } @if (this.hasReport()) {
   <section class="output-panel">
-    <h2>Your Report 😜</h2>
+    <h2>Your Report</h2>
+    <div class="report-content">
+      @for (line of this.report(); track $index) {
+      <p class="report-line">{{ line }}</p>
+      }
+    </div>
   </section>
   }
 </main>

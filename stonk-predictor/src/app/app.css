@@ -171,3 +171,20 @@ footer {
   margin-bottom: 1rem;
   text-align: center;
 }
+.report-content {
+  background: #f9fafb;
+  border-radius: 8px;
+  padding: 16px;
+  border: 1px solid #f3f4f6;
+}
+
+.report-line {
+  color: #374151;
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0 0 12px 0;
+}
+
+.report-line:last-child {
+  margin-bottom: 0;
+}

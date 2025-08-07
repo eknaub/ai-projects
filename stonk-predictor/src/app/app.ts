@@ -10,6 +10,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { dates } from '../utils/dates';
 import { environment } from '../environments/environment';
+import { GoogleGenAI } from '@google/genai';
 
 @Component({
   selector: 'app-root',
@@ -29,6 +30,9 @@ import { environment } from '../environments/environment';
 })
 export class App {
   private http = inject(HttpClient);
+  private ai = new GoogleGenAI({
+    apiKey: environment.geminiApiKey,
+  });
 
   protected readonly isLoadingStocksApi = signal(false);
   protected readonly isLoadingPredictions = signal(false);
@@ -38,6 +42,7 @@ export class App {
   protected readonly tickerForm = new FormGroup({
     ticker: new FormControl(''),
   });
+  protected readonly report = signal<string[]>([]);
 
   protected readonly hasTickers = computed(() => this.tickers().length > 0);
 
@@ -80,17 +85,31 @@ export class App {
     });
   }
 
-  fetchReport(stockData: any[]) {
+  async fetchReport(stockData: any[]) {
     this.isLoadingPredictions.set(true);
     try {
-      // Simulate using stockData to create a report
-      setTimeout(() => {
-        console.log('Fetched stock data:', stockData);
+      const response = await this.ai.models.generateContent({
+        model: 'gemini-2.5-flash',
+        contents: `Generate a detailed stock market report based on the following data: ${JSON.stringify(
+          stockData
+        )}`,
+        config: {
+          systemInstruction:
+            'You are an expert financial analyst. Generate a brief 2-3 sentence report based on the provided stock data. Keep it concise and actionable. For each stock, provide a summary of its performance, key trends, and any notable events that may have influenced its price.',
+          thinkingConfig: {
+            thinkingBudget: 0,
+          },
+        },
+      });
+
+      if (response && response.text) {
         this.hasReport.set(true);
-        this.isLoadingPredictions.set(false);
-      }, 2000);
+        this.report.set(response.text.split('\n\n'));
+      }
     } catch (error) {
       console.error('Error fetching report:', error);
+      this.isLoadingPredictions.set(false);
+    } finally {
       this.isLoadingPredictions.set(false);
     }
   }
