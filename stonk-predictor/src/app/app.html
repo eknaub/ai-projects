@@ -1,5 +1,7 @@
 <header>Stock Predictions</header>
 <main>
+  @if(!this.isLoadingStocksApi() && !this.isLoadingPredictions() &&
+  !this.hasReport()) {
   <section class="action-panel">
     <div>
       <span class="subtitle">Predict stock prices powered by OpenAI</span>
@@ -31,19 +33,22 @@
         }
       </div>
     </div>
-    <button class="generate-report-btn" type="button" disabled>
+    <button
+      matButton="filled"
+      type="button"
+      [disabled]="!this.hasTickers()"
+      (click)="generateReport()"
+    >
       Generate Report
     </button>
     <p class="tag-line">Sometimes it works!</p>
   </section>
-  @if (this.isLoadingStocksApi()) {
+  } @if (this.isLoadingStocksApi()) {
   <section class="loading-panel">
-    <img src="images/loader.svg" alt="loading" />
     <div id="api-message">Querying Stocks API...</div>
   </section>
   } @if (this.isLoadingPredictions()) {
   <section class="loading-panel">
-    <img src="images/loader.svg" alt="loading" />
     <div id="api-message">Querying Predictions API...</div>
   </section>
   } @if (this.hasReport()) {
