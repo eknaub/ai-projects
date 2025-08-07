@@ -1,0 +1,55 @@
+<header>Stock Predictions</header>
+<main>
+  <section class="action-panel">
+    <div>
+      <span class="subtitle">Predict stock prices powered by OpenAI</span>
+    </div>
+    <form [formGroup]="tickerForm" id="ticker-input-form" class="ticker-form">
+      <mat-form-field appearance="outline">
+        <mat-label>Stock ticker</mat-label>
+        <input
+          matInput
+          formControlName="ticker"
+          placeholder="e.g. MSFT, AAPL"
+          class="form-input-control"
+        />
+        <button matSuffix matIconButton (click)="addTicker()" type="button">
+          <mat-icon>add</mat-icon>
+        </button>
+      </mat-form-field>
+    </form>
+    <div>
+      <p class="ticker-list-title">Your tickers</p>
+      <div class="ticker-list">
+        @for (item of this.tickers(); track $index) {
+        <mat-chip-row (removed)="removeTicker($index)">
+          {{ item }}
+          <button matChipRemove>
+            <mat-icon>cancel</mat-icon>
+          </button>
+        </mat-chip-row>
+        }
+      </div>
+    </div>
+    <button class="generate-report-btn" type="button" disabled>
+      Generate Report
+    </button>
+    <p class="tag-line">Sometimes it works!</p>
+  </section>
+  @if (this.isLoadingStocksApi()) {
+  <section class="loading-panel">
+    <img src="images/loader.svg" alt="loading" />
+    <div id="api-message">Querying Stocks API...</div>
+  </section>
+  } @if (this.isLoadingPredictions()) {
+  <section class="loading-panel">
+    <img src="images/loader.svg" alt="loading" />
+    <div id="api-message">Querying Predictions API...</div>
+  </section>
+  } @if (this.hasReport()) {
+  <section class="output-panel">
+    <h2>Your Report 😜</h2>
+  </section>
+  }
+</main>
+<footer>&copy; This is not real financial advice!</footer>
