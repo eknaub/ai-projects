@@ -1,59 +1,75 @@
 # StonkPredictor
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.3.
+StonkPredictor is a web application that generates stock predictions and actionable insights for user-selected stocks. Enter a stock ticker, and the app will fetch the last 3 days of price data, then use Google's Gemini AI to analyze the stock and provide a concise recommendation: **Buy**, **Sell**, or **Hold**.
 
-## Development server
+## Features
 
-To start a local development server, run:
+- **Add up to 3 stock tickers** (e.g., MSFT, AAPL, TSLA)
+- Fetches the previous 3 days of price data for each ticker
+- Uses Gemini AI to analyze stock performance and trends
+- Generates a brief, actionable report for each stock
+
+## How It Works
+
+1. Enter one or more stock tickers in the input field.
+2. Click **Generate Report**.
+3. The app fetches recent price data for each ticker from the Polygon API.
+4. Gemini AI analyzes the data and returns a summary with a **Buy**, **Sell**, or **Hold** recommendation.
+
+## Getting Started
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) (v18 or higher recommended)
+- [Angular CLI](https://angular.dev/tools/cli)
+- Polygon API key (for stock data)
+- Gemini API key (for AI analysis)
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/stonk-predictor.git
+   cd stonk-predictor
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Configure your API keys in `src/environments/environment.ts`:
+   ```ts
+   export const environment = {
+     polygonApiKey: "YOUR_POLYGON_API_KEY",
+     geminiApiKey: "YOUR_GEMINI_API_KEY",
+   };
+   ```
+
+### Development Server
+
+Start the local development server:
 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Open your browser at [http://localhost:4200/](http://localhost:4200/).
 
-## Code scaffolding
+### Building
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
+To build the project for production:
 
 ```bash
 ng build
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## Disclaimer
 
-## Running unit tests
+This application is for educational and entertainment purposes only. **It does not provide real financial advice.** Always do your own research before making investment decisions.
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+## License
 
-```bash
-ng test
-```
+MIT
 
-## Running end-to-end tests
+---
 
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+For more information on using the Angular CLI, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli).

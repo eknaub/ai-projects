@@ -1,0 +1,41 @@
+<header>Image Generator</header>
+<main>
+  @if(!this.isGeneratingImage() && !this.hasImage()) {
+  <section class="action-panel">
+    <div>
+      <span class="title"
+        >Generate an image with a given description powered by Gemini AI</span
+      >
+    </div>
+    <form [formGroup]="userInputForm" id="user-input-form" class="user-form">
+      <mat-form-field appearance="outline">
+        <mat-label>Description</mat-label>
+        <input
+          matInput
+          formControlName="description"
+          class="form-input-control"
+        />
+      </mat-form-field>
+    </form>
+    <button
+      matButton="filled"
+      type="button"
+      [disabled]="!this.userInputForm.valid"
+      (click)="generateImage()"
+    >
+      Generate Image
+    </button>
+  </section>
+  } @if (this.isGeneratingImage()) {
+  <section class="loading-panel">
+    <div id="api-message">Generating image...</div>
+  </section>
+  } @if (this.hasImage()) {
+  <section class="output-panel">
+    <h2>Your image</h2>
+    <div class="image-content">
+      <img [src]="image()" alt="Generated Image" />
+    </div>
+  </section>
+  }
+</main>

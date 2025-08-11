@@ -95,7 +95,7 @@ export class App {
         )}`,
         config: {
           systemInstruction:
-            'You are an expert financial analyst. Generate a brief 2-3 sentence report based on the provided stock data. Keep it concise and actionable. For each stock, provide a summary of its performance, key trends, and any notable events that may have influenced its price.',
+            'You are an expert financial analyst. Generate a brief 2-3 sentence report based on the provided stock data. The given stock data are the share prices of the last 3 days. Keep it concise and actionable. For each stock, provide a summary of its performance, key trends, any notable events that may have influenced its price and a recommendation if it is a good time to buy, sell, or hold.',
           thinkingConfig: {
             thinkingBudget: 0,
           },
