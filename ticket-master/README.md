@@ -1,6 +1,12 @@
 # TicketMaster
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.3.
+TicketMaster is a web application that helps organize and categorize support tickets using AI. Users enter a ticket description, and Gemini AI analyzes the text to determine the appropriate category. The app then saves the ticket and its category in a map for easy tracking and management.
+
+## Features
+
+- Enter support ticket descriptions
+- Gemini AI automatically categorizes each ticket based on its description
+- Tickets and their categories are stored in a map for quick lookup and organization
 
 ## Development server
 
@@ -43,16 +49,6 @@ To execute unit tests with the [Karma](https://karma-runner.github.io) test runn
 ```bash
 ng test
 ```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
 
 ## Additional Resources
 

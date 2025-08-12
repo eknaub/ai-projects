@@ -54,7 +54,7 @@ export class Content {
         },
       });
 
-      if (response && response.text && response.text in TicketType) {
+      if (response && response.text) {
         let type = TicketType.OTHER;
         if (response.text in TicketType) {
           type = TicketType[response.text as keyof typeof TicketType];
