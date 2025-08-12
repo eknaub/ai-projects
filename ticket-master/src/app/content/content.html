@@ -1,0 +1,19 @@
+<form [formGroup]="inputForm" id="input-form" (submit)="this.addTicket()">
+  <mat-form-field appearance="outline">
+    <mat-label>Input</mat-label>
+    <textarea matInput formControlName="input"></textarea>
+  </mat-form-field>
+  <button mat-button type="submit" [disabled]="inputForm.invalid">
+    Submit
+  </button>
+</form>
+
+<h3>Tickets</h3>
+<ul>
+  @for (item of dataMap(); track $index) {
+  <li>
+    {{ item[0] }}: @for (value of item[1]; track $index) {
+    <span>{{ value }}</span>}
+  </li>
+  }
+</ul>
