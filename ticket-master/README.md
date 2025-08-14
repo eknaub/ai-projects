@@ -2,6 +2,12 @@
 
 TicketMaster is a web application that helps organize and categorize support tickets using AI. Users enter a ticket description, and Gemini AI analyzes the text to determine the appropriate category. The app then saves the ticket and its category in a map for easy tracking and management.
 
+## Example
+
+Below is an example screenshot of the TicketMaster app:
+
+![Bong Translations Screenshot](assets/example.png)
+
 ## Features
 
 - Enter support ticket descriptions

@@ -2,6 +2,12 @@
 
 Bong Translations is a web application that allows users to translate text between multiple languages using AI-powered translation services. Simply enter your text, select the source and target languages, and get instant, accurate translations.
 
+## Example
+
+Below is an example screenshot of the Bong Translations app:
+
+![Bong Translations Screenshot](assets/example.png)
+
 ## Features
 
 - Translate text between various languages

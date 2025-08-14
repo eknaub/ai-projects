@@ -2,6 +2,12 @@
 
 StonkPredictor is a web application that generates stock predictions and actionable insights for user-selected stocks. Enter a stock ticker, and the app will fetch the last 3 days of price data, then use Google's Gemini AI to analyze the stock and provide a concise recommendation: **Buy**, **Sell**, or **Hold**.
 
+## Example
+
+Below is an example screenshot of the StonkPredictor app:
+
+![Bong Translations Screenshot](assets/example.png)
+
 ## Features
 
 - **Add up to 3 stock tickers** (e.g., MSFT, AAPL, TSLA)

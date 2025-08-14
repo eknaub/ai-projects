@@ -2,6 +2,12 @@
 
 Image Generator is a web application that creates AI-generated images based on your text descriptions. Enter a prompt, and the app uses Google's Gemini AI to generate a unique image for you.
 
+## Example
+
+Below is an example screenshot of the Image Generator app:
+
+![Bong Translations Screenshot](assets/example.png)
+
 ## Features
 
 - Enter a text description to generate an image
