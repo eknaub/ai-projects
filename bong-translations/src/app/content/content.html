@@ -1,0 +1,60 @@
+<div class="translator-card">
+  <form [formGroup]="translateForm" id="input-form" class="translator-form">
+    <div class="translator-row">
+      <mat-form-field appearance="outline" class="translator-field">
+        <mat-label>From</mat-label>
+        <mat-select formControlName="fromLanguage">
+          @for (lang of languages; track lang) {
+          <mat-option [value]="lang.value">{{lang.viewValue}}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="translator-field">
+        <mat-label>Text to translate</mat-label>
+        <textarea matInput formControlName="userInput" rows="6"></textarea>
+      </mat-form-field>
+    </div>
+    <div class="translator-swap">
+      <button
+        mat-icon-button
+        color="primary"
+        type="button"
+        (click)="swapLanguages()"
+        aria-label="Swap languages"
+      >
+        <mat-icon>swap_horiz</mat-icon>
+      </button>
+    </div>
+    <div class="translator-row">
+      <mat-form-field appearance="outline" class="translator-field">
+        <mat-label>To</mat-label>
+        <mat-select formControlName="toLanguage">
+          @for (lang of languages; track lang) {
+          <mat-option [value]="lang.value">{{lang.viewValue}}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="translator-field">
+        <mat-label>Translated text</mat-label>
+        <textarea
+          matInput
+          readonly
+          [value]="translatedText()"
+          rows="6"
+        ></textarea>
+      </mat-form-field>
+    </div>
+  </form>
+  <div class="translator-actions">
+    <button
+      mat-raised-button
+      color="primary"
+      type="button"
+      (click)="translateUserInput()"
+      [disabled]="!translateForm.valid"
+    >
+      <mat-icon style="margin-right: 8px">translate</mat-icon>
+      Translate
+    </button>
+  </div>
+</div>
