@@ -1,12 +1,7 @@
-import { GoogleGenAI } from "@google/genai";
-import { environment } from "./environment.js";
 import cosineSimilarity from "compute-cosine-similarity";
+import { geminiAi } from "./config.js";
 
 async function main() {
-  const ai = new GoogleGenAI({
-    apiKey: environment.geminiApiKey,
-  });
-
   const questions = [
     "What is the meaning of life?",
     "What is the purpose of existence?",
@@ -19,13 +14,15 @@ async function main() {
     "To bake a cake, you need to follow a recipe that includes ingredients like flour, sugar, and eggs.",
   ];
 
-  const qaResponse = await ai.models.embedContent({
+  const qaResponse = await geminiAi.models.embedContent({
     model: "gemini-embedding-001",
     contents: questions,
     taskType: "QUESTION_ANSWERING",
   });
 
-  const docResponse = await ai.models.embedContent({
+  console.log("QA Embeddings:", qaResponse.embeddings[1].values.length);
+
+  const docResponse = await geminiAi.models.embedContent({
     model: "gemini-embedding-001",
     contents: answers,
     taskType: "RETRIEVAL_DOCUMENT",
