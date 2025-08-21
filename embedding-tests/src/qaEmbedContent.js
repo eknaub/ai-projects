@@ -1,5 +1,5 @@
 import cosineSimilarity from "compute-cosine-similarity";
-import { geminiAi } from "./config.js";
+import { geminiAi } from "../conf/config.js";
 
 async function main() {
   const questions = [

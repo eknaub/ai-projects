@@ -2,7 +2,9 @@
   "type": "module",
   "dependencies": {
     "@google/genai": "^1.15.0",
+    "@langchain/core": "^0.3.72",
     "@supabase/supabase-js": "^2.55.0",
-    "compute-cosine-similarity": "^1.1.0"
+    "compute-cosine-similarity": "^1.1.0",
+    "langchain": "^0.3.31"
   }
 }
