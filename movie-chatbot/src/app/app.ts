@@ -27,6 +27,7 @@ export class App {
 
   async executeChatQuery() {
     try {
+      this.output.set('Doing the thinking...');
       const input = this.userInput || 'Whats the highest rated movie?';
       const matchingEmbeddings = await this.findNearestMatch(input);
 
