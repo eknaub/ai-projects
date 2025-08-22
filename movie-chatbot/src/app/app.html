@@ -1,0 +1,28 @@
+<div class="chatbot-container">
+  <header class="chatbot-header">
+    <h1>🎬 Movie Chatbot</h1>
+    <p>Your friendly movie expert!</p>
+  </header>
+  <main class="chatbot-main">
+    <div class="chatbot-output">
+      @if(output()) {
+      <span>{{ output() }}</span>
+      }
+    </div>
+    <form
+      class="chatbot-form"
+      (submit)="executeChatQuery(); $event.preventDefault()"
+    >
+      <input
+        type="text"
+        placeholder="Ask me about movies..."
+        class="chatbot-input"
+        name="userInput"
+        autocomplete="off"
+        [value]="userInput"
+        (input)="onInputChange($event)"
+      />
+      <button type="submit" class="chatbot-send">Send</button>
+    </form>
+  </main>
+</div>
