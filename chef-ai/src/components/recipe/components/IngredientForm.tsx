@@ -1,6 +1,6 @@
 import { Button, styled, TextField } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
-import { useIngredientsStore } from "../../../hooks/useRecipeStore";
+import { useRecipeStore } from "../../../hooks/useRecipeStore";
 
 const Form = styled("form")({
   display: "flex",
@@ -13,7 +13,7 @@ const IngredientButton = styled(Button)({
 });
 
 function IngredientForm() {
-  const { addIngredient } = useIngredientsStore();
+  const { addIngredient } = useRecipeStore();
 
   const handleAddIngredient = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -21,6 +21,7 @@ function IngredientForm() {
     const data = Object.fromEntries(formData) as Record<string, string>;
 
     addIngredient(data.ingredient);
+    event.currentTarget.reset();
   };
 
   return (

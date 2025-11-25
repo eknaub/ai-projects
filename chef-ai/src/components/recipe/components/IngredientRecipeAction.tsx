@@ -17,7 +17,7 @@ const IntegrientTextContainer = styled("div")({
 });
 
 function IngredientRecipeAction() {
-  const { ingredients } = useRecipeStore();
+  const { ingredients, generateRecipe } = useRecipeStore();
   const isMinIngredients = ingredients.length > 3;
 
   if (!isMinIngredients) {
@@ -32,7 +32,11 @@ function IngredientRecipeAction() {
           Generate a recipe based on your ingredients!
         </Typography>
       </IntegrientTextContainer>
-      <Button variant="contained" style={{ backgroundColor: "#D17557" }}>
+      <Button
+        variant="contained"
+        style={{ backgroundColor: "#D17557" }}
+        onClick={generateRecipe}
+      >
         Generate Recipe
       </Button>
     </IntegrientRecipeContainer>
