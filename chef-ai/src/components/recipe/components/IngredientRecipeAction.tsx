@@ -17,7 +17,7 @@ const IntegrientTextContainer = styled("div")({
 });
 
 function IngredientRecipeAction() {
-  const { ingredients, generateRecipe } = useRecipeStore();
+  const { ingredients, generateRecipe, isGeneratingRecipe } = useRecipeStore();
   const isMinIngredients = ingredients.length > 3;
 
   if (!isMinIngredients) {
@@ -27,8 +27,8 @@ function IngredientRecipeAction() {
   return (
     <IntegrientRecipeContainer>
       <IntegrientTextContainer>
-        <Typography variant="h5">Ready for a Recipe?</Typography>
-        <Typography variant="body1">
+        <Typography variant="h6">Ready for a Recipe?</Typography>
+        <Typography variant="body2">
           Generate a recipe based on your ingredients!
         </Typography>
       </IntegrientTextContainer>
@@ -36,6 +36,7 @@ function IngredientRecipeAction() {
         variant="contained"
         style={{ backgroundColor: "#D17557" }}
         onClick={generateRecipe}
+        loading={isGeneratingRecipe ? true : false}
       >
         Generate Recipe
       </Button>

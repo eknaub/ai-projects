@@ -1,75 +1,85 @@
-# React + TypeScript + Vite
+# ChefAI
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+ChefAI is a web application that generates personalized recipe recommendations and cooking instructions based on available ingredients. Enter the ingredients you have on hand, and the app will use AI to suggest delicious recipes you can make.
 
-Currently, two official plugins are available:
+## Example
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Below are example screenshot of the ChefAI app:
 
-## React Compiler
+![ChefAI Screenshot](assets/example_form.png)
+![ChefAI Screenshot](assets/example_recipe.png)
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+## Features
 
-Note: This will impact Vite dev & build performances.
+- **Enter available ingredients** from your kitchen
+- AI-powered recipe generation based on your ingredients
+- Step-by-step cooking instructions
+- Estimated cooking time
 
-## Expanding the ESLint configuration
+## How It Works
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+1. Enter the ingredients you have available in the input field.
+2. Click **Generate Recipe**.
+3. The app uses AI to analyze your ingredients and generate personalized recipe suggestions.
+4. View detailed cooking instructions and ingredient measurements.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Getting Started
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Prerequisites
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- [Node.js](https://nodejs.org/) (v18 or higher recommended)
+- npm or yarn package manager
+- AI API key (e.g., OpenAI, Anthropic Claude, or Google Gemini)
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/chef-ai.git
+   cd chef-ai
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Configure your API key in `.env`:
+   ```env
+   VITE_AI_API_KEY=YOUR_API_KEY_HERE
+   ```
+
+### Development Server
+
+Start the local development server:
+
+```bash
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Open your browser at [http://localhost:5173/](http://localhost:5173/).
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Building
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+To build the project for production:
+
+```bash
+npm run build
 ```
+
+## Technology Stack
+
+- **React** - UI framework
+- **TypeScript** - Type-safe development
+- **Vite** - Fast build tool and dev server
+- **React Compiler** - Optimized React performance
+
+## Disclaimer
+
+This application is for educational and entertainment purposes only. **Always verify recipes and cooking instructions.** Be mindful of food allergies and dietary restrictions.
+
+## License
+
+MIT
+
+---
+
+For more information on using Vite with React, visit the [Vite Documentation](https://vite.dev/).

@@ -5,13 +5,18 @@ interface RecipeState {
   ingredients: string[];
   addIngredient: (ingredient: string) => void;
   generateRecipe: () => Promise<void>;
+  recipe?: string;
+  isGeneratingRecipe?: boolean;
+  reset: () => void;
 }
 
 export const useRecipeStore = create<RecipeState>((set, get) => ({
   ingredients: [],
   addIngredient: (ingredient: string) =>
     set((state) => ({ ingredients: [...state.ingredients, ingredient] })),
+  reset: () => set({ ingredients: [], recipe: undefined }),
   generateRecipe: async () => {
+    set({ isGeneratingRecipe: true });
     try {
       const ingredients = get().ingredients;
       const response = await genAi.models.generateContent({
@@ -26,9 +31,12 @@ export const useRecipeStore = create<RecipeState>((set, get) => ({
           },
         },
       });
-      console.log(response);
+      set({ recipe: response.candidates?.[0]?.content?.parts?.[0]?.text });
     } catch (error) {
       console.error("Error generating recipe:", error);
+      set({ recipe: "Failed to generate recipe. Please try again." });
+    } finally {
+      set({ isGeneratingRecipe: false });
     }
   },
 }));

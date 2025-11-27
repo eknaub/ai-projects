@@ -20,17 +20,27 @@ function IngredientForm() {
     const formData = new FormData(event.currentTarget);
     const data = Object.fromEntries(formData) as Record<string, string>;
 
+    if (!data.ingredient || data.ingredient.trim() === "") {
+      return;
+    }
+
     addIngredient(data.ingredient);
     event.currentTarget.reset();
   };
 
   return (
     <Form onSubmit={handleAddIngredient}>
-      <TextField name="ingredient" label="Ingredient" />
+      <TextField
+        required
+        name="ingredient"
+        placeholder="e.g. tomatoes"
+        size="small"
+      />
       <IngredientButton
         type="submit"
         variant="contained"
         startIcon={<AddIcon />}
+        size="small"
       >
         Add Ingredient
       </IngredientButton>
