@@ -1,6 +1,12 @@
 import ReactMarkdown from "react-markdown";
 import { useRecipeStore } from "../../../hooks/useRecipeStore";
-import { Button } from "@mui/material";
+import { Button, styled, Typography } from "@mui/material";
+
+const RecipeContainer = styled("div")({
+  display: "flex",
+  flexDirection: "column",
+  gap: "16px",
+});
 
 function IngredientRecipe() {
   const { recipe, reset } = useRecipeStore();
@@ -11,7 +17,7 @@ function IngredientRecipe() {
   }
 
   return (
-    <div>
+    <RecipeContainer>
       <Button
         variant="contained"
         style={{ backgroundColor: "#D17557" }}
@@ -19,8 +25,11 @@ function IngredientRecipe() {
       >
         Create New Recipe
       </Button>
-      <ReactMarkdown>{recipe}</ReactMarkdown>
-    </div>
+      <Typography variant="h5">Chef recommends:</Typography>
+      <div>
+        <ReactMarkdown>{recipe}</ReactMarkdown>
+      </div>
+    </RecipeContainer>
   );
 }
 
